@@ -4,7 +4,7 @@ export const Container = styled.article`
   background: ${({ theme }) => theme.postBackgroundColor};
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: ${({ theme }) => theme.spacing.medium};
   border-radius: 10px;
 
   h2 {
@@ -16,6 +16,6 @@ export const Container = styled.article`
   }
 
   & + article {
-    margin-top: 8px;
+    margin-top: ${({ theme }) => theme.spacing.small};
   }
 `;
