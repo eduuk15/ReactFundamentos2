@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useLayoutEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from './styles/global';
@@ -23,16 +23,19 @@ function App() {
     localStorage.setItem('theme', theme)
   }, [theme]);
 
+  useLayoutEffect(() => {
+    for (let i = 0; i <= 10000; i++) {
+      console.debug(i);
+    }
+  }, [theme]);
+
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyle />
-      <button onClick={handleToggleTheme}>Toggle</button>
-      {theme === 'dark' && (
-        <Layout
-          onToggleTheme={handleToggleTheme}
-          selectedTheme={theme}
-        />
-      )}
+      <Layout
+        onToggleTheme={handleToggleTheme}
+        selectedTheme={theme}
+      />
     </ThemeProvider>
   );
 };
